@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff3cd; 
+  color: #5a3e1b; 
+}
+
+.el-card {
+  background-color: #fffae6;
+  border-radius: 12px;
+}
+
+.el-button--primary {
+  background-color: #c68642;
+  border-color: #c68642;
+}
+
+.el-button--danger {
+  background-color: #8b4513;
+  border-color: #8b4513;
+}
+
+.el-button--success {
+  background-color: #d2691e;
+  border-color: #d2691e;
+}
