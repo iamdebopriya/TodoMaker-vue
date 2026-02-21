@@ -54,8 +54,7 @@ The `bootstrap.js` file is the only entry point and replaces the need for `main.
 ```
 todo-mf/
 │
-├── public/
-│   └── index.html
+├──index.html
 │
 ├── src/
 │   ├── components/
