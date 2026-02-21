@@ -189,15 +189,31 @@ export function mount(el) { ... }
 ```
 
 * The app **exports a `mount` function**, allowing an external application to decide **where** it should render.
-* It does **not hardcode a DOM root** like `#app`, which makes it embeddable inside another application.
-* In development mode, it mounts itself for standalone testing:
 
-  ```js
-  if (import.meta.env.DEV) {
+```js
+export function mount(el) {
+  const pinia = createPinia()
+  app = createApp(App)
+  app.use(pinia)
+  app.use(ElementPlus)
+  app.mount(el)
+}
+```
+
+* It does **not hardcode a DOM root** like `#app`, which makes it embeddable inside another application.
+
+* In standalone mode (when no host is present), it mounts itself for testing:
+
+```js
+if (!window.__MICRO_FRONTEND_HOST__) {
+  const el = document.querySelector('#_todo-mf-dev-root')
+  if (el) {
     mount(el)
   }
-  ```
-* In production, it waits for the **host application** to call `mount(el)`.
+}
+```
+
+* When used inside a host application, the host calls `mount(el)` and controls where the app renders.
 
 This pattern enables:
 
@@ -207,7 +223,6 @@ This pattern enables:
 
 Therefore, the app follows the core principle of micro-frontend architecture:
 **independently built UI modules mounted and controlled by a container application.**
-
 
 ## Recommended VS Code Extensions
 
